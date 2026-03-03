@@ -1,11 +1,26 @@
+let yesScale = 1;
+let noScale = 1;
+
 function moveButton() {
-    const btn = document.getElementById('noBtn');
+    const noBtn = document.getElementById('noBtn');
+    const yesBtn = document.getElementById('yesBtn');
+
+    // 1. Hayır butonunu küçült ve Evet butonunu büyüt
+    noScale -= 0.1;
+    yesScale += 0.15;
+
+    if (noScale < 0.2) noScale = 0.2; // Tamamen yok olmasın ama çok küçülsün
+
+    noBtn.style.transform = `scale(${noScale})`;
+    yesBtn.style.transform = `scale(${yesScale})`;
+
+    // 2. Hayır butonu yine ekranda rastgele kaçmaya devam etsin
     const x = Math.random() * (window.innerWidth - 150);
     const y = Math.random() * (window.innerHeight - 50);
     
-    btn.style.position = 'fixed';
-    btn.style.left = x + 'px';
-    btn.style.top = y + 'px';
+    noBtn.style.position = 'fixed';
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
 }
 
 document.getElementById('yesBtn').addEventListener('click', () => {
